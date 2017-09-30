@@ -24,9 +24,13 @@ fi
 
 # Support multiple users
 while read user; do
-	IFS=: read name pass <<< ${!user}
+	IFS=: read name pass home <<< ${!user}
 	echo "Adding user $name"
-	/add-virtual-user.sh "$name" "$pass"
+    if [ ! -z "$home" ]; then
+        /add-virtual-user.sh "$name" "$pass" "$home"
+    else
+	    /add-virtual-user.sh "$name" "$pass"
+    fi
 done < <(env | grep "FTP_USER_" | sed 's/^\(FTP_USER_[a-zA-Z0-9]*\)=.*/\1/')
 
 # Support user directories
