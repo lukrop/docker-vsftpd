@@ -4,6 +4,15 @@ set -e
 
 [ "$DEBUG" == 'true' ] && set -x
 
+# change UID/GID if environment variables exist
+if [ ! -z "$FTP_UID" ]; then
+    usermod -u $FTP_UID ftp
+fi
+
+if [ ! -z "$FTP_GID" ]; then
+    groupmod -g $FTP_GID ftp
+fi
+
 # Generate password if hash not set
 if [ ! -z "$FTP_PASSWORD" -a -z "$FTP_PASSWORD_HASH" ]; then
   FTP_PASSWORD_HASH=$(echo "$FTP_PASSWORD" | mkpasswd -s -m sha-512)

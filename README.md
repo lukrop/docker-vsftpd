@@ -11,11 +11,16 @@ the client.
 
 ## Virtual User
 
-The FTP user has been set to uid 48 and gid 48.
+The FTP user has been set to uid 48 and gid 48. This can be changed using the environment variables
+`FTP_UID` and `FTP_GID`.
 
 ## Options
 
 The following environment variables are accepted.
+
+- `FTP_UID`: Sets the UID of the FTP user. Default 48.
+
+- `FTP_GID`: Sets the GID of the FTP user. Default 48.
 
 - `FTP_USER`: Sets the default FTP user 
 
