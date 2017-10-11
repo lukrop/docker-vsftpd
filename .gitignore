@@ -1,2 +1,1 @@
-certs/vsftpd.crt
-certs/private/vsftpd.key
+certs/vsftpd.pem
