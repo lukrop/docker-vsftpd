@@ -24,10 +24,10 @@ fi
 
 if [ "$SSL" == 'true' ]; then
     rm /etc/vsftpd.conf
-    ln -s /etc/vsftp_ssl.conf /etc/vsftpd.conf
+    ln -s /etc/vsftpd_ssl.conf /etc/vsftpd.conf
 else
     rm /etc/vsftpd.conf
-    ln -s /etc/vsftp_nossl.conf /etc/vsftpd.conf
+    ln -s /etc/vsftpd_nossl.conf /etc/vsftpd.conf
 fi
 
 # Support multiple users
