@@ -23,9 +23,11 @@ if [ ! -z "$FTP_USER" -a ! -z "$FTP_PASSWORD_HASH" ]; then
 fi
 
 if [ "$SSL" == 'true' ]; then
-    if [ ! grep -q ssl_enable /etc/vsftpd.conf ]; then
-        cat /etc/vsftpd_ssl.part.conf >> /etc/vsftpd.conf
-    fi
+    rm /etc/vsftpd.conf
+    ln -s /etc/vsftp_ssl.conf /etc/vsftpd.conf
+else
+    rm /etc/vsftpd.conf
+    ln -s /etc/vsftp_nossl.conf /etc/vsftpd.conf
 fi
 
 # Support multiple users
