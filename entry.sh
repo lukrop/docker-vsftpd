@@ -22,6 +22,12 @@ if [ ! -z "$FTP_USER" -a ! -z "$FTP_PASSWORD_HASH" ]; then
     /add-virtual-user.sh -d "$FTP_USER" "$FTP_PASSWORD_HASH"
 fi
 
+if [ "$SSL" == 'true' ]; then
+    if [ ! grep -q ssl_enable /etc/vsftpd.conf ]; then
+        cat /etc/vsftpd_ssl.part.conf >> /etc/vsftpd.conf
+    fi
+fi
+
 # Support multiple users
 while read user; do
 	IFS=: read name pass home <<< ${!user}

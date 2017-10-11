@@ -15,6 +15,7 @@ RUN mkdir -p /var/run/vsftpd/empty /etc/vsftpd/user_conf /var/ftp /srv && \
 COPY vsftpd*.conf /etc/
 COPY vsftpd_virtual /etc/pam.d/
 COPY *.sh /
+COPY certs/ /etc/ssl/certs
 
 VOLUME ["/etc/vsftpd", "/srv"]
 
