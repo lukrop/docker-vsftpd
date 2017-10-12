@@ -30,6 +30,10 @@ else
     ln -s /etc/vsftpd_nossl.conf /etc/vsftpd.conf
 fi
 
+if [ ! -z "$FTP_PASSIVE_IP" ]; then
+    sed -i "s/#pasv_address=/pasv_address=${FTP_PASSIVE_IP}" /etc/vsftpd*.conf
+fi
+
 # Support multiple users
 while read user; do
 	IFS=: read name pass home <<< ${!user}
